@@ -89,7 +89,8 @@ function BackToBox({ onBack }: { onBack: () => void }) {
   return (
     <button
       onClick={onBack}
-      className="font-serif fixed bottom-6 left-1/2 z-50 inline-flex -translate-x-1/2 items-center gap-2 rounded-full border border-[var(--brown)]/30 bg-[var(--cream-light)]/90 px-5 py-2.5 text-base italic text-[var(--brown-dark)] shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-[var(--cream-light)] sm:text-lg"
+      className="font-serif fixed bottom-6 left-1/2 z-50 inline-flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/40 bg-white/30 px-5 py-2.5 text-base italic text-[var(--charcoal)] shadow-lg backdrop-blur-lg transition hover:scale-105 hover:bg-white/45 sm:text-lg"
+      style={{ boxShadow: "0 8px 32px rgba(183,107,130,0.18)" }}
       aria-label="Back to the box"
     >
       <ArrowLeft className="h-4 w-4" />
@@ -107,7 +108,7 @@ function ClosedBox({ onOpen }: { onOpen: () => void }) {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.15, duration: 0.7 }}
-        className="font-script mb-2 text-center text-5xl text-[var(--brown-dark)] sm:text-6xl"
+        className="font-script mb-2 text-center text-5xl text-[var(--charcoal)] sm:text-6xl"
       >
         A little surprise for you
       </motion.h1>
@@ -115,7 +116,7 @@ function ClosedBox({ onOpen }: { onOpen: () => void }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.7 }}
-        className="font-serif mb-8 text-center text-lg italic text-[var(--brown)] sm:text-xl"
+        className="font-serif mb-8 text-center text-lg italic text-[var(--rose-dark)] sm:text-xl"
       >
         Tap the box to open 🎁
       </motion.p>
@@ -168,11 +169,11 @@ function Hub({ onPick }: { onPick: (v: View) => void }) {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="font-script mb-2 text-center text-5xl text-[var(--brown-dark)] sm:text-6xl"
+        className="font-script mb-2 text-center text-5xl text-[var(--charcoal)] sm:text-6xl"
       >
         Look what's inside
       </motion.h2>
-      <p className="font-serif mb-8 text-center text-base italic text-[var(--brown)] sm:text-lg">
+      <p className="font-serif mb-8 text-center text-base italic text-[var(--rose-dark)] sm:text-lg">
         Pick something to unwrap ✨
       </p>
 
@@ -182,7 +183,7 @@ function Hub({ onPick }: { onPick: (v: View) => void }) {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="relative aspect-square w-full max-w-[560px] overflow-hidden rounded-xl shadow-2xl"
-        style={{ boxShadow: "0 30px 60px -20px rgba(74,46,22,0.55)" }}
+        style={{ boxShadow: "0 30px 60px -20px rgba(183,107,130,0.45)" }}
       >
         <img
           src={boxOpen}
@@ -192,7 +193,7 @@ function Hub({ onPick }: { onPick: (v: View) => void }) {
           className="absolute inset-0 h-full w-full object-cover"
         />
         {/* Vignette */}
-        <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 45%, rgba(58,30,10,0.45) 100%)" }} />
+        <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 45%, rgba(90,58,71,0.4) 100%)" }} />
 
         {/* Items grid inside the box */}
         <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 p-[6%]">
@@ -217,7 +218,7 @@ function Hub({ onPick }: { onPick: (v: View) => void }) {
                 className="h-[78%] w-auto max-w-[88%] object-contain"
                 style={{ filter: "drop-shadow(0 10px 14px rgba(0,0,0,0.45))" }}
               />
-              <span className="font-script pointer-events-none absolute -bottom-1 rounded-full bg-[var(--cream-light)]/90 px-3 py-0.5 text-lg text-[var(--brown-dark)] opacity-0 shadow transition-opacity group-hover:opacity-100 sm:text-xl">
+              <span className="font-script pointer-events-none absolute -bottom-1 rounded-full bg-white/80 px-3 py-0.5 text-lg text-[var(--charcoal)] opacity-0 shadow transition-opacity group-hover:opacity-100 sm:text-xl">
                 {item.label}
               </span>
             </motion.button>
@@ -228,7 +229,7 @@ function Hub({ onPick }: { onPick: (v: View) => void }) {
       {/* Labels always visible underneath (mobile-friendly) */}
       <div className="mt-6 grid w-full max-w-[560px] grid-cols-4 gap-2 text-center">
         {hubItems.map((it) => (
-          <div key={it.key} className="font-serif text-sm italic text-[var(--brown-dark)] sm:text-base">
+          <div key={it.key} className="font-serif text-sm italic text-[var(--charcoal)] sm:text-base">
             {it.label}
           </div>
         ))}
@@ -252,13 +253,13 @@ function MusicScene({ onBack }: { onBack: () => void }) {
   return (
     <div
       className="relative flex min-h-screen items-center justify-center px-4 py-16"
-      style={{ background: "linear-gradient(135deg, #d4a017 0%, #b8860b 100%)" }}
+      style={{ background: "linear-gradient(135deg, #c8a8d8 0%, #e8b4c0 60%, #d4a5a5 100%)" }}
     >
       <div className="w-full max-w-5xl">
         <motion.h2
           initial={{ y: -16, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="font-script mb-10 text-center text-4xl text-[var(--brown-dark)] sm:text-6xl"
+          className="font-script mb-10 text-center text-4xl text-[var(--charcoal)] sm:text-6xl"
         >
           This song always reminds me of you
         </motion.h2>
@@ -293,14 +294,14 @@ function MusicScene({ onBack }: { onBack: () => void }) {
 
             <div className="mt-5">
               <h3 className="font-serif-display text-2xl">Yellow</h3>
-              <p className="font-serif text-sm italic text-white/60">Coldplay</p>
+              <p className="font-serif text-sm italic text-white/70">Coldplay</p>
             </div>
 
             <div className="mt-4">
-              <div className="h-1 w-full overflow-hidden rounded-full bg-white/15">
-                <div className="h-full rounded-full bg-[#d4a017] transition-all" style={{ width: `${progress}%` }} />
+              <div className="h-1 w-full overflow-hidden rounded-full bg-white/20">
+                <div className="h-full rounded-full bg-[var(--lavender-dark)] transition-all" style={{ width: `${progress}%` }} />
               </div>
-              <div className="mt-1 flex justify-between text-[10px] text-white/50">
+              <div className="mt-1 flex justify-between text-[10px] text-white/60">
                 <span>1:{String(Math.floor(progress * 0.027)).padStart(2, "0")}</span>
                 <span>4:29</span>
               </div>
@@ -327,12 +328,12 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             transition={{ delay: 0.35 }}
             className="text-center md:text-left"
           >
-            <p className="font-script text-3xl leading-snug text-[var(--brown-dark)] sm:text-5xl">
+            <p className="font-script text-3xl leading-snug text-[var(--charcoal)] sm:text-5xl">
               "And it was all yellow —<br />
               your skin, your skin and bones,<br />
               turn into something beautiful…"
             </p>
-            <p className="font-serif mt-6 text-base italic text-[var(--brown-dark)]/70 sm:text-lg">
+            <p className="font-serif mt-6 text-base italic text-[var(--charcoal)]/70 sm:text-lg">
               — for the yellow in you ☀️
             </p>
           </motion.div>
@@ -359,7 +360,7 @@ function PhotosScene({ onBack }: { onBack: () => void }) {
       <motion.h2
         initial={{ y: -16, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="font-script mb-12 text-center text-5xl text-[var(--brown-dark)] sm:text-7xl"
+        className="font-script mb-12 text-center text-5xl text-[var(--charcoal)] sm:text-7xl"
         style={{ transform: "rotate(-2deg)" }}
       >
         Our little memories
@@ -368,7 +369,7 @@ function PhotosScene({ onBack }: { onBack: () => void }) {
       <div className="relative w-full max-w-5xl">
         <div
           className="absolute left-0 right-0 top-6 h-[3px] rounded-full"
-          style={{ background: "linear-gradient(90deg, transparent, #4a2e16 8%, #4a2e16 92%, transparent)" }}
+          style={{ background: "linear-gradient(90deg, transparent, #b76b82 8%, #b76b82 92%, transparent)" }}
         />
         <div className="relative flex flex-wrap items-start justify-center gap-4 sm:gap-6">
           {photos.map((p, i) => (
@@ -380,8 +381,8 @@ function PhotosScene({ onBack }: { onBack: () => void }) {
               whileHover={{ scale: 1.06, rotate: 0, zIndex: 10 }}
               className="relative"
             >
-              <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-2 h-5 w-3 rounded-sm bg-[#8b5a2b] shadow-md" />
-              <div className="bg-[#faf6e8] p-2 pb-10 shadow-xl" style={{ width: 180 }}>
+              <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-2 h-5 w-3 rounded-sm bg-[var(--rose-dark)] shadow-md" />
+              <div className="bg-[#fff8fa] p-2 pb-10 shadow-xl" style={{ width: 180 }}>
                 <img
                   src={p.src}
                   alt={p.caption}
@@ -390,7 +391,7 @@ function PhotosScene({ onBack }: { onBack: () => void }) {
                   loading="lazy"
                   className="h-[160px] w-full object-cover"
                 />
-                <p className="font-script mt-2 text-center text-2xl text-[var(--brown-dark)]">
+                <p className="font-script mt-2 text-center text-2xl text-[var(--charcoal)]">
                   {p.caption}
                 </p>
               </div>
@@ -415,21 +416,21 @@ function LetterScene({ onBack }: { onBack: () => void }) {
         transition={{ duration: 0.8, type: "spring" }}
         className="bg-paper relative w-full max-w-2xl rounded-sm p-8 shadow-2xl sm:p-12"
         style={{
-          border: "1px solid #d9c79a",
-          boxShadow: "0 20px 50px rgba(74,46,22,0.35), inset 0 0 80px rgba(139,90,43,0.08)",
+          border: "1px solid #e8c5d0",
+          boxShadow: "0 20px 50px rgba(183,107,130,0.28), inset 0 0 80px rgba(212,140,158,0.06)",
         }}
       >
         <div
           className="absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 rotate-2"
-          style={{ background: "rgba(255,255,255,0.4)", backdropFilter: "blur(2px)", border: "1px dashed rgba(139,90,43,0.2)" }}
+          style={{ background: "rgba(255,255,255,0.5)", backdropFilter: "blur(2px)", border: "1px dashed rgba(183,107,130,0.25)" }}
         />
 
-        <h2 className="font-script text-center text-5xl text-[var(--brown-dark)] sm:text-6xl">
+        <h2 className="font-script text-center text-5xl text-[var(--charcoal)] sm:text-6xl">
           Happy Birthday, MJ!
         </h2>
-        <div className="mx-auto mt-4 h-px w-24 bg-[var(--brown)]/30" />
+        <div className="mx-auto mt-4 h-px w-24 bg-[var(--rose)]/30" />
 
-        <div className="font-serif mt-6 space-y-4 text-lg leading-relaxed text-[var(--brown-dark)] sm:text-xl">
+        <div className="font-serif mt-6 space-y-4 text-lg leading-relaxed text-[var(--charcoal)] sm:text-xl">
           <p>Dearest MJ,</p>
           <p>
             Where do I even begin? You're the kind of friend everyone wishes for — the
@@ -444,7 +445,7 @@ function LetterScene({ onBack }: { onBack: () => void }) {
             Wishing you a year full of yellow skies, good music, fresh flowers, and
             every little thing that makes you smile. You deserve all of it, and so much more.
           </p>
-          <p className="font-script pt-2 text-3xl text-[var(--brown-dark)] sm:text-4xl">
+          <p className="font-script pt-2 text-3xl text-[var(--charcoal)] sm:text-4xl">
             Love you endlessly,<br />
             your bestie 💌
           </p>
@@ -466,7 +467,7 @@ function FlowersScene({ onBack }: { onBack: () => void }) {
         animate={{ scale: 1, opacity: 1, y: 0 }}
         transition={{ type: "spring", duration: 0.9 }}
         className="overflow-hidden rounded-2xl shadow-2xl"
-        style={{ boxShadow: "0 25px 60px -15px rgba(74,46,22,0.5)" }}
+        style={{ boxShadow: "0 25px 60px -15px rgba(183,107,130,0.45)" }}
       >
         <img
           src={kittenFlowers}
@@ -481,11 +482,11 @@ function FlowersScene({ onBack }: { onBack: () => void }) {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4 }}
-        className="font-script mt-6 text-center text-5xl text-[var(--brown-dark)] sm:text-6xl"
+        className="font-script mt-6 text-center text-5xl text-[var(--charcoal)] sm:text-6xl"
       >
         Flowers for you {"<3"}
       </motion.p>
-      <p className="font-serif mt-2 text-center text-lg italic text-[var(--brown)] sm:text-xl">
+      <p className="font-serif mt-2 text-center text-lg italic text-[var(--rose-dark)] sm:text-xl">
         a little softness, just because.
       </p>
 
