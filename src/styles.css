@@ -154,9 +154,9 @@
   --mustard-dark: #b8860b;
 }
 
-.font-hand { font-family: 'Caveat', cursive; }
-.font-patrick { font-family: 'Patrick Hand', cursive; }
-.font-serif-display { font-family: 'Gloock', serif; }
+.font-script { font-family: 'Dancing Script', cursive; }
+.font-serif { font-family: 'Cormorant Garamond', 'Cormorant', Georgia, serif; }
+.font-serif-display { font-family: 'Cormorant Upright', 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.02em; }
 
 .bg-gingham {
   background-color: #f5ead3;
