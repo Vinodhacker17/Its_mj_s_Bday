@@ -290,8 +290,36 @@ function MusicScene({ onBack }: { onBack: () => void }) {
     return `${m}:${String(sec).padStart(2, "0")}`;
   };
 
+  return (
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-16">
+      {/* Album-art driven background */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: `url(${moonAlbum})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "blur(60px) brightness(0.45) saturate(1.3)",
+          transform: "scale(1.2)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(ellipse at 30% 20%, rgba(139,90,43,0.35), transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(74,46,22,0.55), transparent 60%), linear-gradient(180deg, rgba(20,12,6,0.55), rgba(20,12,6,0.85))",
+        }}
+      />
+
+      <audio ref={audioRef} src="/humsafar.mp3" preload="metadata" />
+
+      <div className="w-full max-w-5xl">
+        <motion.h2
+          initial={{ y: -16, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="font-script mb-10 text-center text-4xl text-[var(--brown-dark)] sm:text-6xl"
+          className="font-script mb-10 text-center text-4xl text-[var(--cream-light)] drop-shadow-lg sm:text-6xl"
         >
           This song always reminds me of you
         </motion.h2>
@@ -301,7 +329,7 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             initial={{ x: -30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="mx-auto w-full max-w-sm rounded-2xl bg-[#181818] p-5 text-white shadow-2xl"
+            className="mx-auto w-full max-w-sm rounded-2xl bg-[#181818]/90 p-5 text-white shadow-2xl backdrop-blur-md"
           >
             <div className="relative">
               <img
@@ -319,7 +347,11 @@ function MusicScene({ onBack }: { onBack: () => void }) {
                 width={256}
                 height={256}
                 animate={{ rotate: playing ? 360 : 0 }}
-                transition={{ duration: 6, repeat: playing ? Infinity : 0, ease: "linear" }}
+                transition={{
+                  duration: 6,
+                  repeat: playing ? Infinity : 0,
+                  ease: "linear",
+                }}
                 className="absolute -right-6 -top-6 h-20 w-20 drop-shadow-xl"
               />
             </div>
@@ -330,14 +362,36 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             </div>
 
             <div className="mt-4">
-              <div className="h-1 w-full overflow-hidden rounded-full bg-white/15">
-                <div className="h-full rounded-full bg-[#d4a017] transition-all" style={{ width: `${progress}%` }} />
+              <div
+                onClick={seek}
+                className="h-1.5 w-full cursor-pointer overflow-hidden rounded-full bg-white/15"
+              >
+                <div
+                  className="h-full rounded-full bg-[#d4a017] transition-all"
+                  style={{ width: `${progress}%` }}
+                />
               </div>
               <div className="mt-1 flex justify-between text-[10px] text-white/50">
-                <span>1:{String(Math.floor(progress * 0.027)).padStart(2, "0")}</span>
-                <span>4:29</span>
+                <span>{fmt(currentTime)}</span>
+                <span>{fmt(duration)}</span>
               </div>
             </div>
+
+            <div className="mt-4 flex items-center justify-between text-white/80">
+              <Shuffle className="h-4 w-4" />
+              <SkipBack className="h-5 w-5" />
+              <button
+                onClick={toggle}
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black shadow-md transition hover:scale-105"
+                aria-label={playing ? "Pause" : "Play"}
+              >
+                {playing ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
+              </button>
+              <SkipForward className="h-5 w-5" />
+              <Repeat className="h-4 w-4" />
+            </div>
+          </motion.div>
+
 
             <div className="mt-4 flex items-center justify-between text-white/80">
               <Shuffle className="h-4 w-4" />
