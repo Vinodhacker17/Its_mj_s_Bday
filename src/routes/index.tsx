@@ -12,9 +12,9 @@ import itemFlowers from "@/assets/item-flowers.png";
 import kittenFlowers from "@/assets/kitten-flowers.jpg";
 // NOTE: If you uploaded a new album cover, change "moon-album.jpg" here to your new file's name!
 import moonAlbum from "@/assets/moon-album.jpg";
-import m1 from "@/assets/memory-1.png";
-import m2 from "@/assets/memory-2.png";
-import m3 from "@/assets/memory-3.png";
+import m1 from "@/assets/memory-1.PNG";
+import m2 from "@/assets/memory-2.PNG";
+import m3 from "@/assets/memory-3.PNG";
 
 export const Route = createFileRoute("/")({
   head: () => ({
