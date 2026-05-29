@@ -10,6 +10,7 @@ import itemVinyl from "../assets/item-vinyl.png";
 import itemEnvelope from "../assets/item-envelope.png";
 import itemFlowers from "../assets/item-flowers.png";
 import kittenFlowers from "../assets/kitten-flowers.jpg";
+// NOTE: If you uploaded a new album cover, change "moon-album.jpg" here to your new file's name!
 import moonAlbum from "../assets/moon-album.jpg";
 import m1 from "../assets/memory-1.png";
 import m2 from "../assets/memory-2.png";
@@ -319,7 +320,8 @@ function MusicScene({ onBack }: { onBack: () => void }) {
         <motion.h2
           initial={{ y: -16, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="font-script mb-10 text-center text-4xl text-[var(--cream-light)] drop-shadow-lg sm:text-6xl"
+          /* 👇 THIS IS THE LINE I FIXED FOR YOU! changed text-[var(--cream-light)] to text-[var(--brown-dark)] 👇 */
+          className="font-script mb-10 text-center text-4xl text-[var(--brown-dark)] drop-shadow-lg sm:text-6xl"
         >
           This song always reminds me of you
         </motion.h2>
