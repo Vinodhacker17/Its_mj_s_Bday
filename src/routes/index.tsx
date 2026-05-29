@@ -11,10 +11,10 @@ import itemEnvelope from "../assets/item-envelope.png";
 import itemFlowers from "../assets/item-flowers.png";
 import kittenFlowers from "../assets/kitten-flowers.jpg";
 import moonAlbum from "../assets/moon-album.jpg";
-import m1 from "../assets/memory-1.jpg";
-import m2 from "../assets/memory-2.jpg";
-import m3 from "../assets/memory-3.jpg";
-import m4 from "../assets/memory-4.jpg";
+import m1 from "../assets/memory-1.png";
+import m2 from "../assets/memory-2.png";
+import m3 from "../assets/memory-3.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -419,7 +419,6 @@ const photos = [
   { src: m1, rot: -6, caption: "Taj Mahal trip!" },
   { src: m2, rot: 4, caption: "Mountain trekking 🏔️" },
   { src: m3, rot: -3, caption: "Power Ranger vibes 🔴🩷" },
-  { src: m4, rot: 5, caption: "Road trip diaries 🚗" },
 ];
 
 function PhotosScene({ onBack }: { onBack: () => void }) {
