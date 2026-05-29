@@ -155,7 +155,7 @@ type HubItem = {
 };
 
 const hubItems: HubItem[] = [
-  { key: "photos", label: "Memories", img: itemCamera, alt: "Vintage film camera", rotate: -8 },
+  { key: "photos", label: "Future Plans", img: itemCamera, alt: "Vintage film camera", rotate: -8 },
   { key: "music", label: "Play this!", img: itemVinyl, alt: "Vinyl record", rotate: 6 },
   { key: "letter", label: "For you", img: itemEnvelope, alt: "Wax-sealed vintage envelope", rotate: -5 },
   { key: "flowers", label: "Flowers", img: itemFlowers, alt: "Small bouquet of dusty pink roses", rotate: 7 },
