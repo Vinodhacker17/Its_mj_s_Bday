@@ -273,7 +273,7 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             <div className="relative">
               <img
                 src={moonAlbum}
-                alt="Yellow album cover"
+                alt="Humsafar album cover"
                 width={640}
                 height={640}
                 loading="lazy"
@@ -292,8 +292,8 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             </div>
 
             <div className="mt-5">
-              <h3 className="font-serif-display text-2xl">Yellow</h3>
-              <p className="font-serif text-sm italic text-white/60">Coldplay</p>
+              <h3 className="font-serif-display text-2xl">Humsafar</h3>
+              <p className="font-serif text-sm italic text-white/60">Akhil Sachdeva</p>
             </div>
 
             <div className="mt-4">
@@ -328,12 +328,10 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             className="text-center md:text-left"
           >
             <p className="font-script text-3xl leading-snug text-[var(--brown-dark)] sm:text-5xl">
-              "And it was all yellow —<br />
-              your skin, your skin and bones,<br />
-              turn into something beautiful…"
-            </p>
-            <p className="font-serif mt-6 text-base italic text-[var(--brown-dark)]/70 sm:text-lg">
-              — for the yellow in you ☀️
+              "Muskurana Bhi Tujhi Se Sikha Hai<br />
+              Dil Lagane Ka Tu Hi Tareeka Hai<br />
+              Aitbaar Bhi Tujhi Se Hota Hai<br />
+              Aau Na Hosh Mein Main Kabhi"
             </p>
           </motion.div>
         </div>
@@ -437,16 +435,18 @@ function LetterScene({ onBack }: { onBack: () => void }) {
             up (even from far away) every single time it matters.
           </p>
           <p>
-            Thank you for being soft when I'm sharp, brave when I'm scared, and silly
-            with me always. Distance is nothing — my heart knows where home is.
+            Thanks for always having my back, matching my crazy energy, and being such a
+            solid friend. I'm really lucky to have a bestie as awesome as you.
           </p>
           <p>
-            Wishing you a year full of yellow skies, good music, fresh flowers, and
-            every little thing that makes you smile. You deserve all of it, and so much more.
+            Wishing you the happiest birthday filled with all your favorite things, great
+            music, and tons of success this year. You deserve the absolute best.
+          </p>
+          <p>
+            Cheers to more fun times and unforgettable memories!
           </p>
           <p className="font-script pt-2 text-3xl text-[var(--brown-dark)] sm:text-4xl">
-            Love you endlessly,<br />
-            your bestie 💌
+            Your best friend,
           </p>
         </div>
       </motion.div>
