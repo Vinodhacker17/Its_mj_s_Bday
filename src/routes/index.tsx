@@ -273,7 +273,7 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             <div className="relative">
               <img
                 src={moonAlbum}
-                alt="Yellow album cover"
+                alt="Humsafar album cover"
                 width={640}
                 height={640}
                 loading="lazy"
@@ -292,8 +292,8 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             </div>
 
             <div className="mt-5">
-              <h3 className="font-serif-display text-2xl">Yellow</h3>
-              <p className="font-serif text-sm italic text-white/60">Coldplay</p>
+              <h3 className="font-serif-display text-2xl">Humsafar</h3>
+              <p className="font-serif text-sm italic text-white/60">Akhil Sachdeva</p>
             </div>
 
             <div className="mt-4">
