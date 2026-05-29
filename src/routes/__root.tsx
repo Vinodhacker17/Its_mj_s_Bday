@@ -72,8 +72,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "A Birthday Surprise for MJ" },
-      { name: "description", content: "An interactive birthday storybook made with love." },
+      { title: "itsforyoumj" },
+      { name: "description", content: "An interactive birthday storybook web app for MJ, featuring a hub-and-spoke design." },
+      { property: "og:title", content: "itsforyoumj" },
+      { name: "twitter:title", content: "itsforyoumj" },
+      { property: "og:description", content: "An interactive birthday storybook web app for MJ, featuring a hub-and-spoke design." },
+      { name: "twitter:description", content: "An interactive birthday storybook web app for MJ, featuring a hub-and-spoke design." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6bfe656f-2ea3-4371-97b5-d72ce77a9e73/id-preview-a62c7b3c--00bf9c63-f984-49f0-91a3-785e04d33a1f.lovable.app-1780065752754.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6bfe656f-2ea3-4371-97b5-d72ce77a9e73/id-preview-a62c7b3c--00bf9c63-f984-49f0-91a3-785e04d33a1f.lovable.app-1780065752754.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
