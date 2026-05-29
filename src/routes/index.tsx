@@ -3,19 +3,18 @@ import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Play, Pause, SkipBack, SkipForward, Shuffle, Repeat } from "lucide-react";
 
-import giftClosed from "../assets/gift-closed.png";
-import boxOpen from "../assets/box-open.jpg";
-import itemCamera from "../assets/item-camera.png";
-import itemVinyl from "../assets/item-vinyl.png";
-import itemEnvelope from "../assets/item-envelope.png";
-import itemFlowers from "../assets/item-flowers.png";
-import kittenFlowers from "../assets/kitten-flowers.jpg";
+import giftClosed from "@/assets/gift-closed.png";
+import boxOpen from "@/assets/box-open.jpg";
+import itemCamera from "@/assets/item-camera.png";
+import itemVinyl from "@/assets/item-vinyl.png";
+import itemEnvelope from "@/assets/item-envelope.png";
+import itemFlowers from "@/assets/item-flowers.png";
+import kittenFlowers from "@/assets/kitten-flowers.jpg";
 // NOTE: If you uploaded a new album cover, change "moon-album.jpg" here to your new file's name!
-import moonAlbum from "../assets/moon-album.jpg";
-import m1 from "../assets/memory-1.png";
-import m2 from "../assets/memory-2.png";
-import m3 from "../assets/memory-3.png";
-
+import moonAlbum from "@/assets/moon-album.jpg";
+import m1 from "@/assets/memory-1.png";
+import m2 from "@/assets/memory-2.png";
+import m3 from "@/assets/memory-3.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -320,7 +319,6 @@ function MusicScene({ onBack }: { onBack: () => void }) {
         <motion.h2
           initial={{ y: -16, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          /* 👇 THIS IS THE LINE I FIXED FOR YOU! changed text-[var(--cream-light)] to text-[var(--brown-dark)] 👇 */
           className="font-script mb-10 text-center text-4xl text-[var(--brown-dark)] drop-shadow-lg sm:text-6xl"
         >
           This song always reminds me of you
