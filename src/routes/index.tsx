@@ -239,7 +239,7 @@ function Hub({ onPick }: { onPick: (v: View) => void }) {
 
 /* ---------- 3a. Music Scene ---------- */
 function MusicScene({ onBack }: { onBack: () => void }) {
-  const audioRef = React.useRef<HTMLAudioElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
