@@ -19,8 +19,8 @@ import m3 from "@/assets/memory-3.PNG";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "A Birthday Surprise for MJ" },
-      { name: "description", content: "An interactive birthday keepsake, made with love." },
+      { title: "For you 🫴🏻" },
+      { name: "description", content: "A special surprise for a special person." },
     ],
   }),
   component: Storybook,
