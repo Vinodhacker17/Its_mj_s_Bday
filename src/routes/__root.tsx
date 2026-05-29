@@ -72,7 +72,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "A Birthday Surprise for MJ" },
+      { title: "for you🫴🏻" },
       { name: "description", content: "A special birthday surprise made with love for MJ." },
     ],
     links: [
