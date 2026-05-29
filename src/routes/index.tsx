@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Play, Pause, SkipBack, SkipForward, Shuffle, Repeat } from "lucide-react";
 
@@ -238,27 +238,88 @@ function Hub({ onPick }: { onPick: (v: View) => void }) {
 }
 
 /* ---------- 3a. Music Scene ---------- */
-
 function MusicScene({ onBack }: { onBack: () => void }) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(28);
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-    if (!playing) return;
-    const id = setInterval(() => setProgress((p) => (p >= 100 ? 0 : p + 0.5)), 500);
-    return () => clearInterval(id);
-  }, [playing]);
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onTime = () => {
+      setCurrentTime(audio.currentTime);
+      if (audio.duration) setProgress((audio.currentTime / audio.duration) * 100);
+    };
+    const onMeta = () => setDuration(audio.duration || 0);
+    const onEnd = () => setPlaying(false);
+    audio.addEventListener("timeupdate", onTime);
+    audio.addEventListener("loadedmetadata", onMeta);
+    audio.addEventListener("ended", onEnd);
+    return () => {
+      audio.removeEventListener("timeupdate", onTime);
+      audio.removeEventListener("loadedmetadata", onMeta);
+      audio.removeEventListener("ended", onEnd);
+    };
+  }, []);
+
+  const toggle = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (playing) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    }
+  };
+
+  const seek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const audio = audioRef.current;
+    if (!audio || !audio.duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  };
+
+  const fmt = (s: number) => {
+    if (!isFinite(s)) return "0:00";
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${String(sec).padStart(2, "0")}`;
+  };
 
   return (
-    <div
-      className="relative flex min-h-screen items-center justify-center px-4 py-16"
-      style={{ background: "linear-gradient(135deg, #d4a017 0%, #b8860b 100%)" }}
-    >
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-16">
+      {/* Album-art driven background */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: `url(${moonAlbum})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "blur(60px) brightness(0.45) saturate(1.3)",
+          transform: "scale(1.2)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(ellipse at 30% 20%, rgba(139,90,43,0.35), transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(74,46,22,0.55), transparent 60%), linear-gradient(180deg, rgba(20,12,6,0.55), rgba(20,12,6,0.85))",
+        }}
+      />
+
+      <audio ref={audioRef} src="/humsafar.mp3" preload="metadata" />
+
       <div className="w-full max-w-5xl">
         <motion.h2
           initial={{ y: -16, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="font-script mb-10 text-center text-4xl text-[var(--brown-dark)] sm:text-6xl"
+          className="font-script mb-10 text-center text-4xl text-[var(--cream-light)] drop-shadow-lg sm:text-6xl"
         >
           This song always reminds me of you
         </motion.h2>
@@ -268,7 +329,7 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             initial={{ x: -30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="mx-auto w-full max-w-sm rounded-2xl bg-[#181818] p-5 text-white shadow-2xl"
+            className="mx-auto w-full max-w-sm rounded-2xl bg-[#181818]/90 p-5 text-white shadow-2xl backdrop-blur-md"
           >
             <div className="relative">
               <img
@@ -286,7 +347,11 @@ function MusicScene({ onBack }: { onBack: () => void }) {
                 width={256}
                 height={256}
                 animate={{ rotate: playing ? 360 : 0 }}
-                transition={{ duration: 6, repeat: playing ? Infinity : 0, ease: "linear" }}
+                transition={{
+                  duration: 6,
+                  repeat: playing ? Infinity : 0,
+                  ease: "linear",
+                }}
                 className="absolute -right-6 -top-6 h-20 w-20 drop-shadow-xl"
               />
             </div>
@@ -297,12 +362,18 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             </div>
 
             <div className="mt-4">
-              <div className="h-1 w-full overflow-hidden rounded-full bg-white/15">
-                <div className="h-full rounded-full bg-[#d4a017] transition-all" style={{ width: `${progress}%` }} />
+              <div
+                onClick={seek}
+                className="h-1.5 w-full cursor-pointer overflow-hidden rounded-full bg-white/15"
+              >
+                <div
+                  className="h-full rounded-full bg-[#d4a017] transition-all"
+                  style={{ width: `${progress}%` }}
+                />
               </div>
               <div className="mt-1 flex justify-between text-[10px] text-white/50">
-                <span>1:{String(Math.floor(progress * 0.027)).padStart(2, "0")}</span>
-                <span>4:29</span>
+                <span>{fmt(currentTime)}</span>
+                <span>{fmt(duration)}</span>
               </div>
             </div>
 
@@ -310,7 +381,7 @@ function MusicScene({ onBack }: { onBack: () => void }) {
               <Shuffle className="h-4 w-4" />
               <SkipBack className="h-5 w-5" />
               <button
-                onClick={() => setPlaying((p) => !p)}
+                onClick={toggle}
                 className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black shadow-md transition hover:scale-105"
                 aria-label={playing ? "Pause" : "Play"}
               >
@@ -430,21 +501,26 @@ function LetterScene({ onBack }: { onBack: () => void }) {
         <div className="font-serif mt-6 space-y-4 text-lg leading-relaxed text-[var(--brown-dark)] sm:text-xl">
           <p>Dearest MJ, 🤍</p>
           <p>
-            Where do I even begin? You're the kind of friend everyone wishes for — the
-            one who laughs the loudest at my silly jokes, sends me memes at 2am, and shows
-            up (even from far away) every single time it matters.
+            Where do I even begin? You're the kind of friend everyone wishes for, but I'm
+            the lucky one who actually got you.
           </p>
           <p>
-            Thanks for always having my back, matching my crazy energy, and being such a
-            solid friend. I'm really lucky to have a bestie as awesome as you! 🤍
+            Like Ranbir Kapoor says, "Pyaar mein junoon hai, par dosti mein sukoon hai."
+            You are exactly that sukoon in my life. I want to thank you from the bottom of
+            my heart for standing by me when no one else did. When things were tough and I
+            felt alone, you were my constant. You didn't just show up; you stayed, and that
+            means everything to me.
+          </p>
+          <p>
+            Thanks for always having my back, matching my crazy energy, and being my
+            absolute rock. Distance means nothing when you have a bond like ours.
           </p>
           <p>
             Wishing you the happiest birthday filled with all your favorite things, great
             music, and tons of success this year. You deserve the absolute best. 🤍
           </p>
-          <p>
-            Cheers to more fun times and unforgettable memories!
-          </p>
+          <p>Cheers to more fun times and unforgettable memories!</p>
+
           <p className="font-script pt-2 text-3xl text-[var(--brown-dark)] sm:text-4xl">
             your dumbo 🐼
           </p>
