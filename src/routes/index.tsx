@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Play, Pause, SkipBack, SkipForward, Shuffle, Repeat } from "lucide-react";
 
