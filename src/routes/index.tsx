@@ -561,7 +561,7 @@ function FlowersScene({ onBack }: { onBack: () => void }) {
         Flowers for you {"<3"}
       </motion.p>
       <p className="font-serif mt-2 text-center text-lg italic text-[var(--brown)] sm:text-xl">
-        a little softness, just because.
+        Because you deserve the world.
       </p>
 
       <BackToBox onBack={onBack} />

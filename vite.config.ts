@@ -1,5 +1,6 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { fileURLToPath, URL } from "url";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
   tanstackStart: {
@@ -8,6 +9,9 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
+    plugins: [
+      nitro({ preset: "vercel" }) // <-- We activate nitro and tell it to build for Vercel here
+    ],
     resolve: {
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url)),
