@@ -428,7 +428,7 @@ function LetterScene({ onBack }: { onBack: () => void }) {
         <div className="mx-auto mt-4 h-px w-24 bg-[var(--brown)]/30" />
 
         <div className="font-serif mt-6 space-y-4 text-lg leading-relaxed text-[var(--brown-dark)] sm:text-xl">
-          <p>Dearest MJ,</p>
+          <p>Dearest MJ, 🤍</p>
           <p>
             Where do I even begin? You're the kind of friend everyone wishes for — the
             one who laughs the loudest at my silly jokes, sends me memes at 2am, and shows
@@ -436,17 +436,17 @@ function LetterScene({ onBack }: { onBack: () => void }) {
           </p>
           <p>
             Thanks for always having my back, matching my crazy energy, and being such a
-            solid friend. I'm really lucky to have a bestie as awesome as you.
+            solid friend. I'm really lucky to have a bestie as awesome as you! 🤍
           </p>
           <p>
             Wishing you the happiest birthday filled with all your favorite things, great
-            music, and tons of success this year. You deserve the absolute best.
+            music, and tons of success this year. You deserve the absolute best. 🤍
           </p>
           <p>
             Cheers to more fun times and unforgettable memories!
           </p>
           <p className="font-script pt-2 text-3xl text-[var(--brown-dark)] sm:text-4xl">
-            Your best friend,
+            your dumbo 🐼
           </p>
         </div>
       </motion.div>
