@@ -392,22 +392,6 @@ function MusicScene({ onBack }: { onBack: () => void }) {
             </div>
           </motion.div>
 
-
-            <div className="mt-4 flex items-center justify-between text-white/80">
-              <Shuffle className="h-4 w-4" />
-              <SkipBack className="h-5 w-5" />
-              <button
-                onClick={() => setPlaying((p) => !p)}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black shadow-md transition hover:scale-105"
-                aria-label={playing ? "Pause" : "Play"}
-              >
-                {playing ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
-              </button>
-              <SkipForward className="h-5 w-5" />
-              <Repeat className="h-4 w-4" />
-            </div>
-          </motion.div>
-
           <motion.div
             initial={{ x: 30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
