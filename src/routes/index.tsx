@@ -238,25 +238,58 @@ function Hub({ onPick }: { onPick: (v: View) => void }) {
 }
 
 /* ---------- 3a. Music Scene ---------- */
-
 function MusicScene({ onBack }: { onBack: () => void }) {
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(28);
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-    if (!playing) return;
-    const id = setInterval(() => setProgress((p) => (p >= 100 ? 0 : p + 0.5)), 500);
-    return () => clearInterval(id);
-  }, [playing]);
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onTime = () => {
+      setCurrentTime(audio.currentTime);
+      if (audio.duration) setProgress((audio.currentTime / audio.duration) * 100);
+    };
+    const onMeta = () => setDuration(audio.duration || 0);
+    const onEnd = () => setPlaying(false);
+    audio.addEventListener("timeupdate", onTime);
+    audio.addEventListener("loadedmetadata", onMeta);
+    audio.addEventListener("ended", onEnd);
+    return () => {
+      audio.removeEventListener("timeupdate", onTime);
+      audio.removeEventListener("loadedmetadata", onMeta);
+      audio.removeEventListener("ended", onEnd);
+    };
+  }, []);
 
-  return (
-    <div
-      className="relative flex min-h-screen items-center justify-center px-4 py-16"
-      style={{ background: "linear-gradient(135deg, #d4a017 0%, #b8860b 100%)" }}
-    >
-      <div className="w-full max-w-5xl">
-        <motion.h2
-          initial={{ y: -16, opacity: 0 }}
+  const toggle = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (playing) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    }
+  };
+
+  const seek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const audio = audioRef.current;
+    if (!audio || !audio.duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  };
+
+  const fmt = (s: number) => {
+    if (!isFinite(s)) return "0:00";
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${String(sec).padStart(2, "0")}`;
+  };
+
           animate={{ y: 0, opacity: 1 }}
           className="font-script mb-10 text-center text-4xl text-[var(--brown-dark)] sm:text-6xl"
         >
