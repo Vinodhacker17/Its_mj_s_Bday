@@ -155,7 +155,7 @@ type HubItem = {
 };
 
 const hubItems: HubItem[] = [
-  { key: "photos", label: "Memories", img: itemCamera, alt: "Vintage film camera", rotate: -8 },
+  { key: "photos", label: "Future Plans", img: itemCamera, alt: "Vintage film camera", rotate: -8 },
   { key: "music", label: "Play this!", img: itemVinyl, alt: "Vinyl record", rotate: 6 },
   { key: "letter", label: "For you", img: itemEnvelope, alt: "Wax-sealed vintage envelope", rotate: -5 },
   { key: "flowers", label: "Flowers", img: itemFlowers, alt: "Small bouquet of dusty pink roses", rotate: 7 },
@@ -345,10 +345,10 @@ function MusicScene({ onBack }: { onBack: () => void }) {
 /* ---------- 3b. Photos Scene ---------- */
 
 const photos = [
-  { src: m1, rot: -6, caption: "golden hours" },
-  { src: m2, rot: 4, caption: "coffee dates" },
-  { src: m3, rot: -3, caption: "sunset hugs" },
-  { src: m4, rot: 5, caption: "ice cream days" },
+  { src: m1, rot: -6, caption: "Taj Mahal trip!" },
+  { src: m2, rot: 4, caption: "Mountain trekking 🏔️" },
+  { src: m3, rot: -3, caption: "Power Ranger vibes 🔴🩷" },
+  { src: m4, rot: 5, caption: "Road trip diaries 🚗" },
 ];
 
 function PhotosScene({ onBack }: { onBack: () => void }) {
@@ -360,7 +360,7 @@ function PhotosScene({ onBack }: { onBack: () => void }) {
         className="font-script mb-12 text-center text-5xl text-[var(--brown-dark)] sm:text-7xl"
         style={{ transform: "rotate(-2deg)" }}
       >
-        Our little memories
+        Future Adventures Pending... ✈️
       </motion.h2>
 
       <div className="relative w-full max-w-5xl">
@@ -428,7 +428,7 @@ function LetterScene({ onBack }: { onBack: () => void }) {
         <div className="mx-auto mt-4 h-px w-24 bg-[var(--brown)]/30" />
 
         <div className="font-serif mt-6 space-y-4 text-lg leading-relaxed text-[var(--brown-dark)] sm:text-xl">
-          <p>Dearest MJ,</p>
+          <p>Dearest MJ, 🤍</p>
           <p>
             Where do I even begin? You're the kind of friend everyone wishes for — the
             one who laughs the loudest at my silly jokes, sends me memes at 2am, and shows
@@ -436,17 +436,17 @@ function LetterScene({ onBack }: { onBack: () => void }) {
           </p>
           <p>
             Thanks for always having my back, matching my crazy energy, and being such a
-            solid friend. I'm really lucky to have a bestie as awesome as you.
+            solid friend. I'm really lucky to have a bestie as awesome as you! 🤍
           </p>
           <p>
             Wishing you the happiest birthday filled with all your favorite things, great
-            music, and tons of success this year. You deserve the absolute best.
+            music, and tons of success this year. You deserve the absolute best. 🤍
           </p>
           <p>
             Cheers to more fun times and unforgettable memories!
           </p>
           <p className="font-script pt-2 text-3xl text-[var(--brown-dark)] sm:text-4xl">
-            Your best friend,
+            your dumbo 🐼
           </p>
         </div>
       </motion.div>
