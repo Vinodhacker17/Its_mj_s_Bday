@@ -418,7 +418,7 @@ function MusicScene({ onBack }: { onBack: () => void }) {
 const photos = [
   { src: m1, rot: -6, caption: "Taj Mahal trip!" },
   { src: m2, rot: 4, caption: "Ladakh trip🏔️" },
-  { src: m3, rot: -3, caption: "Power Ranger vibes 🔴🩷" },
+  { src: m3, rot: -3, caption: "Power Ranger vibes ❤️🩷" },
 ];
 
 function PhotosScene({ onBack }: { onBack: () => void }) {
