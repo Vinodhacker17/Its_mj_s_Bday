@@ -501,21 +501,26 @@ function LetterScene({ onBack }: { onBack: () => void }) {
         <div className="font-serif mt-6 space-y-4 text-lg leading-relaxed text-[var(--brown-dark)] sm:text-xl">
           <p>Dearest MJ, 🤍</p>
           <p>
-            Where do I even begin? You're the kind of friend everyone wishes for — the
-            one who laughs the loudest at my silly jokes, sends me memes at 2am, and shows
-            up (even from far away) every single time it matters.
+            Where do I even begin? You're the kind of friend everyone wishes for, but I'm
+            the lucky one who actually got you.
           </p>
           <p>
-            Thanks for always having my back, matching my crazy energy, and being such a
-            solid friend. I'm really lucky to have a bestie as awesome as you! 🤍
+            Like Ranbir Kapoor says, "Pyaar mein junoon hai, par dosti mein sukoon hai."
+            You are exactly that sukoon in my life. I want to thank you from the bottom of
+            my heart for standing by me when no one else did. When things were tough and I
+            felt alone, you were my constant. You didn't just show up; you stayed, and that
+            means everything to me.
+          </p>
+          <p>
+            Thanks for always having my back, matching my crazy energy, and being my
+            absolute rock. Distance means nothing when you have a bond like ours.
           </p>
           <p>
             Wishing you the happiest birthday filled with all your favorite things, great
             music, and tons of success this year. You deserve the absolute best. 🤍
           </p>
-          <p>
-            Cheers to more fun times and unforgettable memories!
-          </p>
+          <p>Cheers to more fun times and unforgettable memories!</p>
+
           <p className="font-script pt-2 text-3xl text-[var(--brown-dark)] sm:text-4xl">
             your dumbo 🐼
           </p>
