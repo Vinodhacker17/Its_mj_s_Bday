@@ -345,10 +345,10 @@ function MusicScene({ onBack }: { onBack: () => void }) {
 /* ---------- 3b. Photos Scene ---------- */
 
 const photos = [
-  { src: m1, rot: -6, caption: "golden hours" },
-  { src: m2, rot: 4, caption: "coffee dates" },
-  { src: m3, rot: -3, caption: "sunset hugs" },
-  { src: m4, rot: 5, caption: "ice cream days" },
+  { src: m1, rot: -6, caption: "Taj Mahal trip!" },
+  { src: m2, rot: 4, caption: "Mountain trekking 🏔️" },
+  { src: m3, rot: -3, caption: "Power Ranger vibes 🔴🩷" },
+  { src: m4, rot: 5, caption: "Road trip diaries 🚗" },
 ];
 
 function PhotosScene({ onBack }: { onBack: () => void }) {
@@ -360,7 +360,7 @@ function PhotosScene({ onBack }: { onBack: () => void }) {
         className="font-script mb-12 text-center text-5xl text-[var(--brown-dark)] sm:text-7xl"
         style={{ transform: "rotate(-2deg)" }}
       >
-        Our little memories
+        Future Adventures Pending... ✈️
       </motion.h2>
 
       <div className="relative w-full max-w-5xl">
